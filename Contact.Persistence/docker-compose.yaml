@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  myapp:
+    image: contactpersistence:latest
+    container_name: contactpersistence_container
+    ports:
+      - "5206:80"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "HML"
+    networks:
+      - techchallengenetwork
+
+networks:
+  techchallengenetwork:
+    external: true
