@@ -6,14 +6,11 @@ public class TechChallengeProfile : Profile
     public TechChallengeProfile()
     {
         RequestToEntity();
-        EntityToResponse();
-    }
-
-    private void EntityToResponse()
-    {
     }
 
     private void RequestToEntity()
     {
+        CreateMap<Communication.Request.RequestContactJson, Domain.Entities.Contact>()
+            .ForMember(destiny => destiny.DDDId, config => config.Ignore());
     }
 }

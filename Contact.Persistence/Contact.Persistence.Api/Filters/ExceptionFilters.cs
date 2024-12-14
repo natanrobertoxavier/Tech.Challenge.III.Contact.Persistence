@@ -17,7 +17,7 @@ public class ExceptionFilters : IExceptionFilter
         }
         else
         {
-            LancarErroDesconhecido(context);
+            ThrowUnknownError(context);
         }
     }
 
@@ -25,15 +25,15 @@ public class ExceptionFilters : IExceptionFilter
     {
         if (context.Exception is ValidationErrorsException)
         {
-            TratarErrosDeValidacaoException(context);
+            HandleValidationError(context);
         }
         else if (context.Exception is InvalidLoginException)
         {
-            TratarLoginException(context);
+            HandleLoginException(context);
         };
     }
 
-    private static void TratarErrosDeValidacaoException(ExceptionContext context)
+    private static void HandleValidationError(ExceptionContext context)
     {
         var validationErrorException = context.Exception as ValidationErrorsException;
 
@@ -41,7 +41,7 @@ public class ExceptionFilters : IExceptionFilter
         context.Result = new ObjectResult(new ErrorResponseJson(validationErrorException.ErrorMessages));
     }
 
-    private static void TratarLoginException(ExceptionContext context)
+    private static void HandleLoginException(ExceptionContext context)
     {
         var loginError = context.Exception as InvalidLoginException;
 
@@ -49,7 +49,7 @@ public class ExceptionFilters : IExceptionFilter
         context.Result = new ObjectResult(new ErrorResponseJson(loginError.Message));
     }
 
-    private static void LancarErroDesconhecido(ExceptionContext context)
+    private static void ThrowUnknownError(ExceptionContext context)
     {
         context.HttpContext.Response.StatusCode = (int)HttpStatusCode.InternalServerError;
         context.Result = new ObjectResult(new ErrorResponseJson(ErrorsMessages.UnknowError));

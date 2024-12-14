@@ -1,8 +1,10 @@
 ﻿using Contact.Persistence.Api.Filters;
 using Contact.Persistence.Application.UseCase.Contact.Register;
+using Contact.Persistence.Application.UseCase.Contact.Update;
 using Contact.Persistence.Communication.Request;
 using Contact.Persistence.Communication.Response;
 using Microsoft.AspNetCore.Mvc;
+using System.ComponentModel.DataAnnotations;
 
 namespace Contact.Persistence.Api.Controllers.v1;
 
@@ -20,17 +22,17 @@ public class ContactController : TechChallengeController
         return Ok(result);
     }
 
-    //[HttpPut]
-    //[ProducesResponseType(typeof(Communication.Response.Result<MessageResult>), StatusCodes.Status200OK)]
-    //public async Task<IActionResult> Update(
-    //    [FromQuery][Required] Guid id,
-    //    [FromBody][Required] RequestContactJson request,
-    //    [FromServices] IUpdateContactUseCase useCase)
-    //{
-    //    await useCase.Execute(id, request);
+    [HttpPut]
+    [ProducesResponseType(typeof(Communication.Response.Result<MessageResult>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Update(
+        [FromQuery][Required] Guid id,
+        [FromBody][Required] RequestContactJson request,
+        [FromServices] IUpdateContactUseCase useCase)
+    {
+        var result = await useCase.UpdateContact(id, request);
 
-    //    return NoContent();
-    //}
+        return Ok(result);
+    }
 
     //[HttpDelete]
     //[ProducesResponseType(typeof(Communication.Response.Result<MessageResult>), StatusCodes.Status200OK)]

@@ -4,6 +4,7 @@ using Contact.Persistence.Application.Messages.Handlers;
 using Contact.Persistence.Application.Services;
 using Contact.Persistence.Application.Services.LoggedUser;
 using Contact.Persistence.Application.UseCase.Contact.Register;
+using Contact.Persistence.Application.UseCase.Contact.Update;
 using Contact.Persistence.Domain.Messages;
 using Contact.Persistence.Domain.Messages.DomaiEvents;
 using MediatR;
@@ -40,7 +41,8 @@ public static class Initializer
 
     private static void AddUseCases(IServiceCollection services)
     {
-        services.AddScoped<IRegisterContactUseCase, RegisterContactUseCase>(); ;
+        services.AddScoped<IRegisterContactUseCase, RegisterContactUseCase>();
+        services.AddScoped<IUpdateContactUseCase, UpdateContactUseCase>();
     }
     private static void AddLoggedUser(IServiceCollection services)
     {

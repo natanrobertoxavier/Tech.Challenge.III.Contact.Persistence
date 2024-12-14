@@ -1,7 +1,10 @@
 ﻿using Contact.Persistence.Domain.Extensions;
+using Contact.Persistence.Domain.Repositories;
+using Contact.Persistence.Domain.Repositories.Contact;
 using Contact.Persistence.Domain.Services;
 using Contact.Persistence.Infrastructure.Queue;
 using Contact.Persistence.Infrastructure.RepositoryAccess;
+using Contact.Persistence.Infrastructure.RepositoryAccess.Repository.Contact;
 using Contact.Persistence.Infrastructure.ServicesAccess;
 using FluentMigrator.Runner;
 using Microsoft.EntityFrameworkCore;
@@ -17,8 +20,10 @@ public static class Initializer
         AddFluentMigrator(services, configurationManager);
         AddContext(services, configurationManager);
         AddServices(services);
+        AddRepositories(services);
         AddRabbitMqDispatcher(services);
         RegisterServices(services, configurationManager);
+        AddWorkUnit(services);
     }
 
     private static void AddFluentMigrator(IServiceCollection services, IConfiguration configurationManager)
@@ -57,6 +62,11 @@ public static class Initializer
         services.AddScoped<IContactQueryServiceApi, ContactQueryServiceApi>();
     }
 
+    private static void AddRepositories(IServiceCollection services)
+    {
+        services.AddScoped<IContactWriteOnlyRepository, ContactRepository>();
+    }
+
     private static void AddRabbitMqDispatcher(IServiceCollection services)
     {
         services.AddScoped<IRabbitMqEventsDispatcher, RabbitMqEventsDispatcher>();
@@ -81,5 +91,10 @@ public static class Initializer
             client.BaseAddress = new Uri(configurationManager.GetSection("ServicesApiAddress:ContactQueryApi").Value);
             client.DefaultRequestHeaders.Add("Accept", "application/json");
         });
+    }
+
+    private static void AddWorkUnit(IServiceCollection services)
+    {
+        services.AddScoped<IWorkUnit, WorkUnit>();
     }
 }
