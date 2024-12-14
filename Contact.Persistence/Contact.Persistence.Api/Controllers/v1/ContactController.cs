@@ -1,4 +1,5 @@
 ﻿using Contact.Persistence.Api.Filters;
+using Contact.Persistence.Application.UseCase.Contact.Delete;
 using Contact.Persistence.Application.UseCase.Contact.Register;
 using Contact.Persistence.Application.UseCase.Contact.Update;
 using Contact.Persistence.Communication.Request;
@@ -34,17 +35,14 @@ public class ContactController : TechChallengeController
         return Ok(result);
     }
 
-    //[HttpDelete]
-    //[ProducesResponseType(typeof(Communication.Response.Result<MessageResult>), StatusCodes.Status200OK)]
-    //public async Task<IActionResult> Remove(
-    //    [FromQuery][Required] Guid id,
-    //    [FromServices] IDeleteContactUseCase useCase)
-    //{
-    //    var result = await useCase.Execute(id);
+    [HttpDelete]
+    [ProducesResponseType(typeof(Communication.Response.Result<MessageResult>), StatusCodes.Status200OK)]
+    public async Task<IActionResult> Delete(
+        [FromQuery][Required] Guid id,
+        [FromServices] IDeleteContactUseCase useCase)
+    {
+        var result = await useCase.DeleteContactAsync(id);
 
-    //    if (result)
-    //        return NoContent();
-
-    //    return UnprocessableEntity(ErrorsMessages.NoContactsFound);
-    //}
+        return Ok(result);
+    }
 }

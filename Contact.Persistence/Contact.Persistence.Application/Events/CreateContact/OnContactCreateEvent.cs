@@ -1,7 +1,7 @@
 ﻿using Contact.Persistence.Infrastructure.Queue;
 using RabbitMq.Package.Events;
 
-namespace Contact.Persistence.Application.Events;
+namespace Contact.Persistence.Application.Events.CreateContact;
 public class OnContactCreateEvent : IRabbitMqEvent<OnContactCreateMessage>
 {
     public string Exchange => RabbitMqConstants.ContactPersistenceExchange;

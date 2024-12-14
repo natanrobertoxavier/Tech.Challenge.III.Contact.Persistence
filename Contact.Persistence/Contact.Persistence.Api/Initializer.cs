@@ -50,7 +50,11 @@ public static class Initializer
                 new RabbitMqQueue(
                     exchangeName: RabbitMqConstants.ContactPersistenceExchange,
                     routingKeyName: RabbitMqConstants.RegisterContactRoutingKey,
-                    queueName: RabbitMqConstants.RegisterContactQueueName)
+                    queueName: RabbitMqConstants.RegisterContactQueueName),
+                new RabbitMqQueue(
+                    exchangeName: RabbitMqConstants.ContactPersistenceExchange,
+                    routingKeyName: RabbitMqConstants.DeleteContactRoutingKey,
+                    queueName: RabbitMqConstants.DeleteContactQueueName)
                 )
             ;
     }

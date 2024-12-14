@@ -1,4 +1,4 @@
-﻿namespace Contact.Persistence.Application.Events;
+﻿namespace Contact.Persistence.Application.Events.CreateContact;
 public class OnContactCreateMessage(
     Guid id,
     string firstName,

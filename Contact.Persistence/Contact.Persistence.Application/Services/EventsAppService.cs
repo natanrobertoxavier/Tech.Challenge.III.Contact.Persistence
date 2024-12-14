@@ -1,4 +1,6 @@
 ﻿using Contact.Persistence.Application.Events;
+using Contact.Persistence.Application.Events.CreateContact;
+using Contact.Persistence.Application.Events.DeleteContact;
 using Contact.Persistence.Application.Interfaces;
 using Contact.Persistence.Domain.Messages.DomaiEvents;
 using Contact.Persistence.Infrastructure.Queue;
@@ -9,7 +11,7 @@ public class EventsAppService(
 {
     private readonly IRabbitMqEventsDispatcher _rabbitMqEventsDispatcher = rabbitMqEventsDispatcher;
 
-    public async Task SendRegionCreateEvent(ContactCreateDomainEvent message)
+    public async Task SendCreateContactEvent(ContactCreateDomainEvent message)
     {
         await _rabbitMqEventsDispatcher.SendEvent(new OnContactCreateEvent()
         {
@@ -21,6 +23,16 @@ public class EventsAppService(
                 message.PhoneNumber,
                 message.Email,
                 message.UserId
+            )
+        });
+    }
+
+    public async Task SendDeleteContactEvent(DeleteContactDomainEvent message)
+    {
+        await _rabbitMqEventsDispatcher.SendEvent(new OnDeleteContactEvent()
+        {
+            Payload = new OnDeleteContactMessage(
+                message.ContactId
             )
         });
     }

@@ -3,6 +3,7 @@ using Contact.Persistence.Application.Messages;
 using Contact.Persistence.Application.Messages.Handlers;
 using Contact.Persistence.Application.Services;
 using Contact.Persistence.Application.Services.LoggedUser;
+using Contact.Persistence.Application.UseCase.Contact.Delete;
 using Contact.Persistence.Application.UseCase.Contact.Register;
 using Contact.Persistence.Application.UseCase.Contact.Update;
 using Contact.Persistence.Domain.Messages;
@@ -43,6 +44,7 @@ public static class Initializer
     {
         services.AddScoped<IRegisterContactUseCase, RegisterContactUseCase>();
         services.AddScoped<IUpdateContactUseCase, UpdateContactUseCase>();
+        services.AddScoped<IDeleteContactUseCase, DeleteContactUseCase>();
     }
     private static void AddLoggedUser(IServiceCollection services)
     {
@@ -52,7 +54,8 @@ public static class Initializer
     private static void AddDomainEvents(IServiceCollection services)
     {
         services.AddScoped<IMessagePublisher, MessagePublisher>();
-        services.AddScoped<INotificationHandler<ContactCreateDomainEvent>, ContactEventHandler>();
+        services.AddScoped<INotificationHandler<ContactCreateDomainEvent>, CreateContactEventHandler>();
+        services.AddScoped<INotificationHandler<DeleteContactDomainEvent>, DeleteContactEventHandler>();
     }
 
     private static void AddEvents(IServiceCollection services)
