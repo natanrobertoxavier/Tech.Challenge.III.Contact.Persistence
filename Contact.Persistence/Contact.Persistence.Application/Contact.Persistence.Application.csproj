@@ -21,6 +21,7 @@
     <ProjectReference Include="..\Contact.Persistence.Communication\Contact.Persistence.Communication.csproj" />
     <ProjectReference Include="..\Contact.Persistence.Domain\Contact.Persistence.Domain.csproj" />
     <ProjectReference Include="..\Contact.Persistence.Exceptions\Contact.Persistence.Exceptions.csproj" />
+    <ProjectReference Include="..\Contact.Persistence.Infrastructure\Contact.Persistence.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>

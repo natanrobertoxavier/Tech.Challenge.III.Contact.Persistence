@@ -1,6 +1,6 @@
-﻿using Serilog;
-using Contact.Persistence.Domain.ResultServices;
+﻿using Contact.Persistence.Domain.ResultServices;
 using Contact.Persistence.Domain.Services;
+using Serilog;
 
 namespace Contact.Persistence.Infrastructure.ServicesAccess;
 public class UserQueryServiceApi(

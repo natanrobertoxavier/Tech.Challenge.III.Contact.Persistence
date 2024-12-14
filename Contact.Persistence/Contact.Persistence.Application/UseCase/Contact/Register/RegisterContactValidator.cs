@@ -1,7 +1,7 @@
 ﻿using Contact.Persistence.Communication.Request;
+using Contact.Persistence.Exceptions;
 using FluentValidation;
 using System.Text.RegularExpressions;
-using Tech.Challenge.I.Exceptions;
 
 namespace Contact.Persistence.Application.UseCase.Contact.Register;
 public class RegisterContactValidator : AbstractValidator<RequestContactJson>
