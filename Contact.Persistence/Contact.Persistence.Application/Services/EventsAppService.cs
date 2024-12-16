@@ -1,5 +1,4 @@
-﻿using Contact.Persistence.Application.Events;
-using Contact.Persistence.Application.Events.CreateContact;
+﻿using Contact.Persistence.Application.Events.CreateContact;
 using Contact.Persistence.Application.Events.DeleteContact;
 using Contact.Persistence.Application.Interfaces;
 using Contact.Persistence.Domain.Messages.DomaiEvents;

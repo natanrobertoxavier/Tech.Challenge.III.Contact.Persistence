@@ -1,14 +1,12 @@
-﻿using Moq;
+﻿using Contact.Persistence.Application.Services.LoggedUser;
 using Contact.Persistence.Application.UseCase.Contact.Delete;
-using Contact.Persistence.Domain.Repositories;
-using Contact.Persistence.Domain.Repositories.Contact;
-using Contact.Persistence.Application.Services.LoggedUser;
-using Contact.Persistence.Domain.Services;
 using Contact.Persistence.Domain.Messages.DomaiEvents;
 using Contact.Persistence.Domain.ResultServices;
+using Contact.Persistence.Domain.Services;
 using MediatR;
-using TokenService.Manager.Controller;
+using Moq;
 using Serilog;
+using TokenService.Manager.Controller;
 
 namespace Contact.Persistence.Tests.UseCase.Contact;
 

@@ -1,14 +1,8 @@
-﻿using Azure.Core;
-using Contact.Persistence.Application.Services.LoggedUser;
+﻿using Contact.Persistence.Application.Services.LoggedUser;
 using Contact.Persistence.Communication.Response;
-using Contact.Persistence.Domain.Entities;
 using Contact.Persistence.Domain.Messages.DomaiEvents;
-using Contact.Persistence.Domain.Repositories.Contact;
 using Contact.Persistence.Domain.ResultServices;
 using Contact.Persistence.Domain.Services;
-using Contact.Persistence.Exceptions.ExceptionBase;
-using Contact.Persistence.Infrastructure.ServicesAccess;
-using FluentMigrator.Builders.IfDatabase;
 using MediatR;
 using Serilog;
 using TokenService.Manager.Controller;
@@ -60,7 +54,7 @@ public class DeleteContactUseCase(
             return output.Failure(new List<string> { errorMessage });
         }
     }
-    
+
     private static string GetErrorMessageIfContactFails(Domain.ResultServices.Result<ContactResult> contact)
     {
         var @return = string.Empty;

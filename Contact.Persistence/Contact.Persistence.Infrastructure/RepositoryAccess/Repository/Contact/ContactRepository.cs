@@ -5,6 +5,6 @@ public class ContactRepository(
     TechChallengeContext context) : IContactWriteOnlyRepository
 {
     private readonly TechChallengeContext _context = context;
-        public void Update(Domain.Entities.Contact contact) =>
-        _context.Contacts.Update(contact);
+    public void Update(Domain.Entities.Contact contact) =>
+    _context.Contacts.Update(contact);
 }

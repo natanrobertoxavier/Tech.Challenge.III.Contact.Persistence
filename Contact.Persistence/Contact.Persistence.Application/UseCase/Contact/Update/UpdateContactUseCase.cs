@@ -3,14 +3,11 @@ using Contact.Persistence.Application.Services.LoggedUser;
 using Contact.Persistence.Application.UseCase.Contact.Register;
 using Contact.Persistence.Communication.Request;
 using Contact.Persistence.Communication.Response;
-using Contact.Persistence.Domain.Messages.DomaiEvents;
 using Contact.Persistence.Domain.Repositories;
 using Contact.Persistence.Domain.Repositories.Contact;
 using Contact.Persistence.Domain.Services;
 using Contact.Persistence.Exceptions;
 using Contact.Persistence.Exceptions.ExceptionBase;
-using Contact.Persistence.Infrastructure.ServicesAccess;
-using Newtonsoft.Json.Linq;
 using Serilog;
 using TokenService.Manager.Controller;
 

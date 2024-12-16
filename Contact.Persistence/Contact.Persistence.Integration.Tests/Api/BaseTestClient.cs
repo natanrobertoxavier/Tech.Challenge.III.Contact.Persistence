@@ -1,8 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc.Testing;
 using Newtonsoft.Json;
 using System.Text;
-using System.Text.Json;
-using Contact.Persistence.Communication.Request;
 using TokenService.Manager.Controller;
 
 namespace Contact.Persistence.Integration.Tests.Api;
